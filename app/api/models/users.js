@@ -8,11 +8,9 @@ const UserSchema = new mongoose.Schema({
     password: String
 })
 
-UserSchema.pre('save', function(next){
-    this.password = bcrypt.hash(this.password, saltRounds)
+UserSchema.pre('save', async function  (next) {
+    this.password = await bcrypt.hash(this.password, saltRounds)
     next()
 })
 
-User          = mongoose.model('User', UserSchema)
-
-module.exports = User
+module.exports = mongoose.model('User', UserSchema)
