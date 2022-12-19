@@ -8,6 +8,7 @@ const users      = require('./routes/users')
 const articles   = require('./routes/articles')
 const water_logs = require('./routes/water_logs')
 const food_logs  = require('./routes/food_logs')
+const excercise_logs = require('./routes/excercise_logs')
 const bodyPreference = require('./routes/body_preferences')
 
 mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@prognet.tnozzjt.mongodb.net/?retryWrites=true&w=majority`).catch(error => handleError(error))
@@ -20,6 +21,7 @@ app.use('/users', users)
 app.use('/articles', articles)
 app.use('/water-log', water_logs)
 app.use('/food-log', food_logs)
+app.use('/excercise-log', excercise_logs)
 app.use('/excercises', bodyPreference)
 
 app.listen(process.env.PORT, () => {     
