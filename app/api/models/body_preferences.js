@@ -6,9 +6,17 @@ const Excercise       = new mongoose.Schema({
     burn: Number
 })
 
-const ExcercisePack  = new mongoose.Schema({
+const Food = new mongoose.Schema({
+    name: String,
+    category: String,
+    description: String,
+    cal: Number
+})
+
+const levelPack  = new mongoose.Schema({
     level: Number,
-    excercises: [Excercise]
+    excercises: [Excercise],
+    foods: [Food]
 })
 
 const BodyPreference = new mongoose.Schema({
@@ -16,7 +24,7 @@ const BodyPreference = new mongoose.Schema({
     image_path: {type:String,default: "./base.jpg"},
     description: String,
     status: Boolean,
-    excercise_packs: [ExcercisePack]
+    level_packs: [levelPack]
 })
 
 module.exports = mongoose.model('BodyPreference', BodyPreference)
