@@ -4,5 +4,6 @@ const userController = require('../app/api/controllers/users')
 const isAuth	     = require('../app/api/middlewares/isAuth')
 
 router.post('/register', isAuth, userController.create)
+router.get('/detail/:id', isAuth, userController.detail)
 
 module.exports = router

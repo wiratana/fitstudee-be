@@ -17,6 +17,7 @@ module.exports = {
 		res.status(404).send("password doesn't match")
 	    
 	    const tokens = {
+        userId: user._id,
 		accessToken: jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET, {expiresIn:"15m"}),
 		refreshToken: jwt.sign(user.toJSON(), process.env.REFRESH_TOKEN_SECRET, {expiresIn:"30m"})
 	    }
