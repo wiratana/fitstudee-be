@@ -29,8 +29,8 @@ module.exports = {
             const user = await userModel.findOne(req.params)
 
             if(!user) res.send("user doesn't exists")
-
-            res.status(200).json(user)
+            
+            return res.status(200).json(user)
         } catch (error) {
             next(error)
         }
