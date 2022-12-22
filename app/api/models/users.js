@@ -6,8 +6,15 @@ const UserDetailSchema = new mongoose.Schema({
     initialization_status: {type: Boolean, default: true},
     height: Number,
     weight: Number,
+    sex: String,
+    bmi: Number,
+    status: String,
+    calories_need: Number,
     age: Number,
-    body_preference: Number,
+    body_preference: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'BodyPreference'
+    },
     level: Number
 })
 
@@ -16,11 +23,6 @@ const UserSchema = new mongoose.Schema({
     email: String,
     password: String,
     detail: UserDetailSchema
-})
-
-UserSchema.pre('save', async function  (next) {
-    this.password = await bcrypt.hash(this.password, saltRounds)
-    next()
 })
 
 module.exports = mongoose.model('User', UserSchema)
