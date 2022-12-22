@@ -12,6 +12,17 @@ module.exports = {
     },
     get: async function(req, res, next){
         try{
+            const body_preferences = await bodyPreferenceModel.find({})
+
+            if(!body_preferences) return res.send("body preferences doesn't exists")
+
+            return res.status(200).json(body_preferences)
+        } catch (error) {
+            next(error)
+        }
+    },
+    detail: async function(req, res, next){
+        try{
             const body_preference = await bodyPreferenceModel.findOne(req.params)
 
             if(!body_preference) return res.send("body preference doesn't exists")

@@ -26,7 +26,7 @@ app.use('/articles', articles)
 app.use('/water-log', water_logs)
 app.use('/food-log', food_logs)
 app.use('/excercise-log', excercise_logs)
-app.use('/excercises', bodyPreference)
+app.use('/body-pref', bodyPreference)
 
 app.listen(process.env.PORT, () => {     
     console.log(`running at port : ${process.env.PORT}`)
