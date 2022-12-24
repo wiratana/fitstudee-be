@@ -13,10 +13,16 @@ const Food = new mongoose.Schema({
     cal: Number
 })
 
+const FoodCategory = new mongoose.Schema({
+    name: String,
+    description: String,
+    foods:[Food]
+})
+
 const levelPack  = new mongoose.Schema({
     level: Number,
     excercises: [Excercise],
-    foods: [Food]
+    food_categories: [FoodCategory]
 })
 
 const BodyPreference = new mongoose.Schema({
