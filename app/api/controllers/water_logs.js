@@ -37,7 +37,7 @@ module.exports = {
     },
     destroy: async function(req, res, next){
         try{
-            const water_log = await waterLogModel.deleteOne(req.body)
+            const water_log = await waterLogModel.deleteOne(req.params)
             res.status(200).json(water_log)
         } catch (error) {
             next(error)
