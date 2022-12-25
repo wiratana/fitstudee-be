@@ -19,25 +19,21 @@ module.exports = {
             next(error)
         }
     },
-    create: async function (req, res, next){
-        const excercise_log = await excerciseLogModel({
-                _userId: await jwt.verify(
-                            req.headers["authorization"].split(" ")[1], 
-                            process.env.ACCESS_TOKEN_SECRET
-                        )._id,
-                excercises: req.body 
-            })
-            
+    create: async function (req, res, next){            
         try{
-            await excercise_log.save()
-            return res.send(excercise_log)
+            const excercise_logs = await excerciseLogModel.insertMany(req.body)
+            
+            if(!excercise_logs) return res.send("excercise_logs doesn't exists")
+            
+            return res.send(excercise_logs)
         } catch (error) {
             next(error)
         }	
     },
     destroy: async function(req, res, next){
         try{
-            const excercise_log = await excerciseLogModel.deleteOne(req.body)
+            const excercise_log = await excerciseLogModel.deleteOne(req.params)
+            
             res.status(200).json(excercise_log)
         } catch (error) {
             next(error)
