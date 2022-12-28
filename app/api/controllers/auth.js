@@ -18,7 +18,7 @@ module.exports = {
 	    
 	    const tokens = {
         userId: user._id,
-		accessToken: jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET, {expiresIn:"15m"}),
+		accessToken: jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN_SECRET, {expiresIn:"1d"}),
 		refreshToken: jwt.sign(user.toJSON(), process.env.REFRESH_TOKEN_SECRET, {expiresIn:"30m"})
 	    }
 	    
